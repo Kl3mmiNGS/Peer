@@ -1,22 +1,27 @@
-import './App.css';
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import BookingPage from './components/BookingPage';
+import ConfirmedBooking from './components/ConfirmedBooking.js';
 
-function App() {
+const App = () => {
   return (
     <Router>
       <nav>
         <ul>
-          <li><Link to = "/">Home</Link></li>
-          <li><Link to = "/bookinh">Book a Table</Link></li>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/booking">Book a Table</Link></li>
         </ul>
       </nav>
-      <Switch>
-        <Route path = "/booking" component = { BookingPage }/>
-      </Switch>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/booking" element={<BookingPage />} />
+        <Route path="/confirmed" element={<ConfirmedBooking />} />
+      </Routes>
     </Router>
   );
-}
+};
+
+const Home = () => {
+  return <h1>Welcome to the Home Page</h1>;
+};
 
 export default App;
